@@ -9,7 +9,7 @@ public class MissleMover : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        speed = 1000.0F;
+        speed = 700.0F;
         Missle.velocity = transform.forward * speed;
 	}
 }

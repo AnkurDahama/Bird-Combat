@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5400000}
   - component: {fileID: 114366783867323786}
   - component: {fileID: 136747663358146594}
+  - component: {fileID: 114482824610604676}
   m_Layer: 0
   m_Name: Missle
   m_TagString: Untagged
@@ -3396,6 +3397,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Missle: {fileID: 5400000}
   speed: 0
+--- !u!114 &114482824610604676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 418b19f2e8f8a094e93cccf72c4e0e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Boom: {fileID: 100000, guid: ad26e381f73a38e4fbb59bdbd813f39c, type: 2}
 --- !u!136 &136747663358146594
 CapsuleCollider:
   m_ObjectHideFlags: 1
