@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour {
     public Rigidbody Player;
     public float speed;
     public float FlySpeed;
     public float Altitude;
+    public Rigidbody missle;
+    public GameObject missleSpawn;
     void Start()
     {
         FlySpeed = 0;
@@ -15,14 +18,14 @@ public class PlayerController : MonoBehaviour {
     void Update()
     {
         //Fly Speed setting
-        if(Input.GetKey(KeyCode.Q))
+        if(Input.GetKey(KeyCode.UpArrow))
             FlySpeed += 0.1F;
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.DownArrow))
             FlySpeed -= 0.1F;
         // Altitude Setting
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.O))
             Altitude += 2F;
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.P))
             Altitude -= 2F;
         if(Input.GetKey(KeyCode.LeftArrow))
         {
@@ -34,6 +37,13 @@ public class PlayerController : MonoBehaviour {
             Vector3 rotateAngle = new Vector3(0, 0, 0.3F);
             transform.Rotate(rotateAngle);
         }
+        
+
+
+        if (Input.GetKeyDown(KeyCode.F))
+        { 
+            Instantiate(missle, missleSpawn.transform.position, missleSpawn.transform.rotation);
+        }
 
     }
     void FixedUpdate()
@@ -43,10 +53,7 @@ public class PlayerController : MonoBehaviour {
         Vector3 movement = new Vector3(moveHorizontal*2, Altitude, FlySpeed);
         Altitude = 0;
         Player.velocity = movement * speed;
-
         // Tilting Code
-
-        
-
     }
+
 }
