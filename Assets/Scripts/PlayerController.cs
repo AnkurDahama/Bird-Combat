@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     public Rigidbody Player;
     public float speed;
     public float FlySpeed;
@@ -18,16 +19,19 @@ public class PlayerController : MonoBehaviour {
     void Update()
     {
         //Fly Speed setting
-        if(Input.GetKey(KeyCode.UpArrow))
-            FlySpeed += 0.1F;
+        if (Input.GetKey(KeyCode.UpArrow))
+            if (FlySpeed < 8.0F)
+                FlySpeed += 0.1F;
         if (Input.GetKey(KeyCode.DownArrow))
-            FlySpeed -= 0.1F;
+            if (FlySpeed > -8.0F)
+                FlySpeed -= 0.1F;
         // Altitude Setting
         if (Input.GetKey(KeyCode.O))
             Altitude += 2F;
         if (Input.GetKey(KeyCode.P))
             Altitude -= 2F;
-        if(Input.GetKey(KeyCode.LeftArrow))
+
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             Vector3 rotateAngle = new Vector3(0, 0, -0.3F);
             transform.Rotate(rotateAngle);
@@ -37,11 +41,11 @@ public class PlayerController : MonoBehaviour {
             Vector3 rotateAngle = new Vector3(0, 0, 0.3F);
             transform.Rotate(rotateAngle);
         }
-        
 
 
-        if (Input.GetKeyDown(KeyCode.F))
-        { 
+
+            if (Input.GetKeyDown(KeyCode.F))
+        {
             Instantiate(missle, missleSpawn.transform.position, missleSpawn.transform.rotation);
         }
 
@@ -50,10 +54,12 @@ public class PlayerController : MonoBehaviour {
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         //float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(moveHorizontal*2, Altitude, FlySpeed);
+        Vector3 movement = new Vector3(moveHorizontal * 2, Altitude, FlySpeed);
         Altitude = 0;
         Player.velocity = movement * speed;
+        //  Player.transform.Rotate(Input.GetAxis("Vertical"), Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"));
         // Tilting Code
     }
 
 }
+

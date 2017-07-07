@@ -14,7 +14,7 @@ public class AimController : MonoBehaviour {
 	void Update () {
 	if(Input.GetKey(KeyCode.Z))
         {
-            Aimmer.transform.localScale = new Vector3(0.1312706F, 500.0002F, 0.1931263F);
+            Aimmer.transform.localScale = new Vector3(0.1312706F, 500.0002F, 0.01F);
         }
     if (Input.GetKeyUp(KeyCode.Z))
         {
